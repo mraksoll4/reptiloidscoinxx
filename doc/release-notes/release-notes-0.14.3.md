@@ -7,7 +7,7 @@ performance improvements.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/bitcoin/bitcoin/issues>
+  <https://github.com/mraksoll4/bitcoin/issues>
 
 To receive security and update notifications, please subscribe to:
 
