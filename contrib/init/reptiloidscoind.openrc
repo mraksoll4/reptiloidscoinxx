@@ -2,41 +2,41 @@
 
 # backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/bitcoin/.bitcoin" ]; then
-	BITCOIND_DEFAULT_DATADIR="/var/lib/bitcoin/.bitcoin"
+if [ -d "/var/lib/reptiloidscoin/.reptiloidscoin" ]; then
+	REPTILOIDSCOIND_DEFAULT_DATADIR="/var/lib/reptiloidscoin/.reptiloidscoin"
 else
-	BITCOIND_DEFAULT_DATADIR="/var/lib/bitcoind"
+	REPTILOIDSCOIND_DEFAULT_DATADIR="/var/lib/reptiloidscoind"
 fi
 
-BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/bitcoin/bitcoin.conf}
-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/bitcoind}
-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/bitcoind.pid}
-BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
-BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-bitcoin}}
-BITCOIND_GROUP=${BITCOIND_GROUP:-bitcoin}
-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/bitcoind}
-BITCOIND_NICE=${BITCOIND_NICE:-${NICELEVEL:-0}}
-BITCOIND_OPTS="${BITCOIND_OPTS:-${BITCOIN_OPTS}}"
+REPTILOIDSCOIND_CONFIGFILE=${REPTILOIDSCOIND_CONFIGFILE:-/etc/reptiloidscoin/reptiloidscoin.conf}
+REPTILOIDSCOIND_PIDDIR=${REPTILOIDSCOIND_PIDDIR:-/var/run/reptiloidscoind}
+REPTILOIDSCOIND_PIDFILE=${REPTILOIDSCOIND_PIDFILE:-${REPTILOIDSCOIND_PIDDIR}/reptiloidscoind.pid}
+REPTILOIDSCOIND_DATADIR=${REPTILOIDSCOIND_DATADIR:-${REPTILOIDSCOIND_DEFAULT_DATADIR}}
+REPTILOIDSCOIND_USER=${REPTILOIDSCOIND_USER:-${REPTILOIDSCOIN_USER:-reptiloidscoin}}
+REPTILOIDSCOIND_GROUP=${REPTILOIDSCOIND_GROUP:-reptiloidscoin}
+REPTILOIDSCOIND_BIN=${REPTILOIDSCOIND_BIN:-/usr/bin/reptiloidscoind}
+REPTILOIDSCOIND_NICE=${REPTILOIDSCOIND_NICE:-${NICELEVEL:-0}}
+REPTILOIDSCOIND_OPTS="${REPTILOIDSCOIND_OPTS:-${REPTILOIDSCOIN_OPTS}}"
 
-name="Bitcoin Core Daemon"
-description="Bitcoin cryptocurrency P2P network daemon"
+name="ReptiloidsCoin Core Daemon"
+description="ReptiloidsCoin cryptocurrency P2P network daemon"
 
-command="/usr/bin/bitcoind"
-command_args="-pid=\"${BITCOIND_PIDFILE}\" \
-		-conf=\"${BITCOIND_CONFIGFILE}\" \
-		-datadir=\"${BITCOIND_DATADIR}\" \
+command="/usr/bin/reptiloidscoind"
+command_args="-pid=\"${REPTILOIDSCOIND_PIDFILE}\" \
+		-conf=\"${REPTILOIDSCOIND_CONFIGFILE}\" \
+		-datadir=\"${REPTILOIDSCOIND_DATADIR}\" \
 		-daemon \
-		${BITCOIND_OPTS}"
+		${REPTILOIDSCOIND_OPTS}"
 
-required_files="${BITCOIND_CONFIGFILE}"
-start_stop_daemon_args="-u ${BITCOIND_USER} \
-			-N ${BITCOIND_NICE} -w 2000"
-pidfile="${BITCOIND_PIDFILE}"
+required_files="${REPTILOIDSCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${REPTILOIDSCOIND_USER} \
+			-N ${REPTILOIDSCOIND_NICE} -w 2000"
+pidfile="${REPTILOIDSCOIND_PIDFILE}"
 
 # The retry schedule to use when stopping the daemon. Could be either
 # a timeout in seconds or multiple signal/timeout pairs (like
 # "SIGKILL/180 SIGTERM/300")
-retry="${BITCOIND_SIGTERM_TIMEOUT}"
+retry="${REPTILOIDSCOIND_SIGTERM_TIMEOUT}"
 
 depend() {
 	need localmount net
@@ -50,29 +50,29 @@ start_pre() {
 	checkpath \
 	-d \
 	--mode 0750 \
-	--owner "${BITCOIND_USER}:${BITCOIND_GROUP}" \
-	"${BITCOIND_DATADIR}"
+	--owner "${REPTILOIDSCOIND_USER}:${REPTILOIDSCOIND_GROUP}" \
+	"${REPTILOIDSCOIND_DATADIR}"
 
 	checkpath \
 	-d \
 	--mode 0755 \
-	--owner "${BITCOIND_USER}:${BITCOIND_GROUP}" \
-	"${BITCOIND_PIDDIR}"
+	--owner "${REPTILOIDSCOIND_USER}:${REPTILOIDSCOIND_GROUP}" \
+	"${REPTILOIDSCOIND_PIDDIR}"
 
 	checkpath -f \
-	-o ${BITCOIND_USER}:${BITCOIND_GROUP} \
+	-o ${REPTILOIDSCOIND_USER}:${REPTILOIDSCOIND_GROUP} \
 	-m 0660 \
-	${BITCOIND_CONFIGFILE}
+	${REPTILOIDSCOIND_CONFIGFILE}
 
 	checkconfig || return 1
 }
 
 checkconfig()
 {
-	if ! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
+	if ! grep -qs '^rpcpassword=' "${REPTILOIDSCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run bitcoind."
-		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
+		eerror "ERROR: You must set a secure rpcpassword to run reptiloidscoind."
+		eerror "The setting must appear in ${REPTILOIDSCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
 		eerror "and must not be the same as the rpcuser setting."
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"Bitcoin Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"ReptiloidsCoin Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

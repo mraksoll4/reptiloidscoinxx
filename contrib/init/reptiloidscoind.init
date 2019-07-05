@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 #
-#  bitcoind The bitcoin core server.
+#  reptiloidscoind The reptiloidscoin core server.
 #
 #
 # chkconfig: 345 80 20
-# description: bitcoind
-# processname: bitcoind
+# description: reptiloidscoind
+# processname: reptiloidscoind
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/bitcoind, see below
-if [ -f /etc/sysconfig/bitcoind ]; then
-        . /etc/sysconfig/bitcoind
+# you can override defaults in /etc/sysconfig/reptiloidscoind, see below
+if [ -f /etc/sysconfig/reptiloidscoind ]; then
+        . /etc/sysconfig/reptiloidscoind
 fi
 
 RETVAL=0
 
-prog=bitcoind
-# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/bitcoind
-lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/bitcoind}
+prog=reptiloidscoind
+# you can override the lockfile via REPTILOIDSCOIND_LOCKFILE in /etc/sysconfig/reptiloidscoind
+lockfile=${REPTILOIDSCOIND_LOCKFILE-/var/lock/subsys/reptiloidscoind}
 
-# bitcoind defaults to /usr/bin/bitcoind, override with BITCOIND_BIN
-bitcoind=${BITCOIND_BIN-/usr/bin/bitcoind}
+# reptiloidscoind defaults to /usr/bin/reptiloidscoind, override with REPTILOIDSCOIND_BIN
+reptiloidscoind=${REPTILOIDSCOIND_BIN-/usr/bin/reptiloidscoind}
 
-# bitcoind opts default to -disablewallet, override with BITCOIND_OPTS
-bitcoind_opts=${BITCOIND_OPTS--disablewallet}
+# reptiloidscoind opts default to -disablewallet, override with REPTILOIDSCOIND_OPTS
+reptiloidscoind_opts=${REPTILOIDSCOIND_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "
-    daemon $DAEMONOPTS $bitcoind $bitcoind_opts
+    daemon $DAEMONOPTS $reptiloidscoind $reptiloidscoind_opts
     RETVAL=$?
     echo
     [ $RETVAL -eq 0 ] && touch $lockfile

@@ -1,33 +1,33 @@
-# /etc/conf.d/bitcoind: config file for /etc/init.d/bitcoind
+# /etc/conf.d/reptiloidscoind: config file for /etc/init.d/reptiloidscoind
 
 # Config file location
-#BITCOIND_CONFIGFILE="/etc/bitcoin/bitcoin.conf"
+#REPTILOIDSCOIND_CONFIGFILE="/etc/reptiloidscoin/reptiloidscoin.conf"
 
-# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
-#BITCOIND_PIDDIR="/var/run/bitcoind"
+# What directory to write pidfile to?  (created and owned by $REPTILOIDSCOIND_USER)
+#REPTILOIDSCOIND_PIDDIR="/var/run/reptiloidscoind"
 
 # What filename to give the pidfile
-#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/bitcoind.pid"
+#REPTILOIDSCOIND_PIDFILE="${REPTILOIDSCOIND_PIDDIR}/reptiloidscoind.pid"
 
-# Where to write bitcoind data (be mindful that the blockchain is large)
-#BITCOIND_DATADIR="/var/lib/bitcoind"
+# Where to write reptiloidscoind data (be mindful that the blockchain is large)
+#REPTILOIDSCOIND_DATADIR="/var/lib/reptiloidscoind"
 
-# User and group to own bitcoind process
-#BITCOIND_USER="bitcoin"
-#BITCOIND_GROUP="bitcoin"
+# User and group to own reptiloidscoind process
+#REPTILOIDSCOIND_USER="reptiloidscoin"
+#REPTILOIDSCOIND_GROUP="reptiloidscoin"
 
-# Path to bitcoind executable
-#BITCOIND_BIN="/usr/bin/bitcoind"
+# Path to reptiloidscoind executable
+#REPTILOIDSCOIND_BIN="/usr/bin/reptiloidscoind"
 
-# Nice value to run bitcoind under
-#BITCOIND_NICE=0
+# Nice value to run reptiloidscoind under
+#REPTILOIDSCOIND_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
-#BITCOIND_OPTS=""
+#REPTILOIDSCOIND_OPTS=""
 
-# The timeout in seconds OpenRC will wait for bitcoind to terminate
+# The timeout in seconds OpenRC will wait for reptiloidscoind to terminate
 # after a SIGTERM has been raised.
 # Note that this will be mapped as argument to start-stop-daemon's
 # '--retry' option, which means you can specify a retry schedule
 # here. For more information see man 8 start-stop-daemon.
-BITCOIND_SIGTERM_TIMEOUT=60
+REPTILOIDSCOIND_SIGTERM_TIMEOUT=60

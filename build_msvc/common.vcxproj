@@ -3,15 +3,15 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <PropertyGroup>
       <BuildDependsOn>
-          CopyBitcoinConfig;
+          CopyReptiloidsCoinConfig;
           CopySecp256k1Config;
           $(BuildDependsOn);
       </BuildDependsOn>
   </PropertyGroup>
-  <Target Name="CopyBitcoinConfig"
-          Inputs="$(MSBuildThisFileDirectory)bitcoin_config.h"
-          Outputs="$(MSBuildThisFileDirectory)..\src\config\bitcoin-config.h">
-      <Copy SourceFiles="$(MSBuildThisFileDirectory)bitcoin_config.h" DestinationFiles="$(MSBuildThisFileDirectory)..\src\config\bitcoin-config.h" />
+  <Target Name="CopyReptiloidsCoinConfig"
+          Inputs="$(MSBuildThisFileDirectory)reptiloidscoin_config.h"
+          Outputs="$(MSBuildThisFileDirectory)..\src\config\reptiloidscoin-config.h">
+      <Copy SourceFiles="$(MSBuildThisFileDirectory)reptiloidscoin_config.h" DestinationFiles="$(MSBuildThisFileDirectory)..\src\config\reptiloidscoin-config.h" />
   </Target>
   <Target Name="CopySecp256k1Config"
           Inputs="$(MSBuildThisFileDirectory)libsecp256k1_config.h"

@@ -1,10 +1,10 @@
-// Copyright (c) 2011-2018 The Bitcoin Core developers
+// Copyright (c) 2011-2018 The ReptiloidsCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/bitcoinamountfield.h>
+#include <qt/reptiloidscoinamountfield.h>
 
-#include <qt/bitcoinunits.h>
+#include <qt/reptiloidscoinunits.h>
 #include <qt/guiconstants.h>
 #include <qt/qvaluecombobox.h>
 
@@ -55,7 +55,7 @@ public:
 
         if (valid) {
             val = qBound(m_min_amount, val, m_max_amount);
-            input = BitcoinUnits::format(currentUnit, val, false, BitcoinUnits::separatorAlways);
+            input = ReptiloidsCoinUnits::format(currentUnit, val, false, ReptiloidsCoinUnits::separatorAlways);
             lineEdit()->setText(input);
         }
     }
@@ -67,7 +67,7 @@ public:
 
     void setValue(const CAmount& value)
     {
-        lineEdit()->setText(BitcoinUnits::format(currentUnit, value, false, BitcoinUnits::separatorAlways));
+        lineEdit()->setText(ReptiloidsCoinUnits::format(currentUnit, value, false, ReptiloidsCoinUnits::separatorAlways));
         Q_EMIT valueChanged();
     }
 
@@ -121,7 +121,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(BitcoinUnits::format(BitcoinUnits::BTC, BitcoinUnits::maxMoney(), false, BitcoinUnits::separatorAlways));
+            int w = fm.width(ReptiloidsCoinUnits::format(ReptiloidsCoinUnits::RTD, ReptiloidsCoinUnits::maxMoney(), false, ReptiloidsCoinUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -147,12 +147,12 @@ public:
     }
 
 private:
-    int currentUnit{BitcoinUnits::BTC};
+    int currentUnit{ReptiloidsCoinUnits::RTD};
     CAmount singleStep{CAmount(100000)}; // satoshis
     mutable QSize cachedMinimumSizeHint;
     bool m_allow_empty{true};
     CAmount m_min_amount{CAmount(0)};
-    CAmount m_max_amount{BitcoinUnits::maxMoney()};
+    CAmount m_max_amount{ReptiloidsCoinUnits::maxMoney()};
 
     /**
      * Parse a string into a number of base monetary units and
@@ -162,10 +162,10 @@ private:
     CAmount parse(const QString &text, bool *valid_out=nullptr) const
     {
         CAmount val = 0;
-        bool valid = BitcoinUnits::parse(currentUnit, text, &val);
+        bool valid = ReptiloidsCoinUnits::parse(currentUnit, text, &val);
         if(valid)
         {
-            if(val < 0 || val > BitcoinUnits::maxMoney())
+            if(val < 0 || val > ReptiloidsCoinUnits::maxMoney())
                 valid = false;
         }
         if(valid_out)
@@ -212,9 +212,9 @@ Q_SIGNALS:
     void valueChanged();
 };
 
-#include <qt/bitcoinamountfield.moc>
+#include <qt/reptiloidscoinamountfield.moc>
 
-BitcoinAmountField::BitcoinAmountField(QWidget *parent) :
+ReptiloidsCoinAmountField::ReptiloidsCoinAmountField(QWidget *parent) :
     QWidget(parent),
     amount(nullptr)
 {
@@ -226,7 +226,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent) :
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
-    unit->setModel(new BitcoinUnits(this));
+    unit->setModel(new ReptiloidsCoinUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -237,26 +237,26 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent) :
     setFocusProxy(amount);
 
     // If one if the widgets changes, the combined content changes as well
-    connect(amount, &AmountSpinBox::valueChanged, this, &BitcoinAmountField::valueChanged);
-    connect(unit, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &BitcoinAmountField::unitChanged);
+    connect(amount, &AmountSpinBox::valueChanged, this, &ReptiloidsCoinAmountField::valueChanged);
+    connect(unit, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &ReptiloidsCoinAmountField::unitChanged);
 
     // Set default based on configuration
     unitChanged(unit->currentIndex());
 }
 
-void BitcoinAmountField::clear()
+void ReptiloidsCoinAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-void BitcoinAmountField::setEnabled(bool fEnabled)
+void ReptiloidsCoinAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
     unit->setEnabled(fEnabled);
 }
 
-bool BitcoinAmountField::validate()
+bool ReptiloidsCoinAmountField::validate()
 {
     bool valid = false;
     value(&valid);
@@ -264,7 +264,7 @@ bool BitcoinAmountField::validate()
     return valid;
 }
 
-void BitcoinAmountField::setValid(bool valid)
+void ReptiloidsCoinAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet("");
@@ -272,7 +272,7 @@ void BitcoinAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-bool BitcoinAmountField::eventFilter(QObject *object, QEvent *event)
+bool ReptiloidsCoinAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -282,60 +282,60 @@ bool BitcoinAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *BitcoinAmountField::setupTabChain(QWidget *prev)
+QWidget *ReptiloidsCoinAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     QWidget::setTabOrder(amount, unit);
     return unit;
 }
 
-CAmount BitcoinAmountField::value(bool *valid_out) const
+CAmount ReptiloidsCoinAmountField::value(bool *valid_out) const
 {
     return amount->value(valid_out);
 }
 
-void BitcoinAmountField::setValue(const CAmount& value)
+void ReptiloidsCoinAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
 }
 
-void BitcoinAmountField::SetAllowEmpty(bool allow)
+void ReptiloidsCoinAmountField::SetAllowEmpty(bool allow)
 {
     amount->SetAllowEmpty(allow);
 }
 
-void BitcoinAmountField::SetMinValue(const CAmount& value)
+void ReptiloidsCoinAmountField::SetMinValue(const CAmount& value)
 {
     amount->SetMinValue(value);
 }
 
-void BitcoinAmountField::SetMaxValue(const CAmount& value)
+void ReptiloidsCoinAmountField::SetMaxValue(const CAmount& value)
 {
     amount->SetMaxValue(value);
 }
 
-void BitcoinAmountField::setReadOnly(bool fReadOnly)
+void ReptiloidsCoinAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
 }
 
-void BitcoinAmountField::unitChanged(int idx)
+void ReptiloidsCoinAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, BitcoinUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, ReptiloidsCoinUnits::UnitRole).toInt();
 
     amount->setDisplayUnit(newUnit);
 }
 
-void BitcoinAmountField::setDisplayUnit(int newUnit)
+void ReptiloidsCoinAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }
 
-void BitcoinAmountField::setSingleStep(const CAmount& step)
+void ReptiloidsCoinAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }

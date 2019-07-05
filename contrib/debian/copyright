@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Bitcoin
+Upstream-Name: ReptiloidsCoin
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#bitcoin@freenode.net
-Source: https://github.com/mraksoll4/bitcoin
+ irc://#reptiloidscoin@freenode.net
+Source: https://github.com/mraksoll4/reptiloidscoin
 
 Files: *
-Copyright: 2009-2019, Bitcoin Core Developers
+Copyright: 2009-2019, ReptiloidsCoin Core Developers
 License: Expat
-Comment: The Bitcoin Core Developers encompasses the current developers listed on bitcoin.org,
+Comment: The ReptiloidsCoin Core Developers encompasses the current developers listed on reptiloidscoin.org,
          as well as the numerous contributors to the project.
 
 Files: debian/*
@@ -86,12 +86,12 @@ License: Expat
 Comment: Modifications of Stephan Hutchings Typicons
 
 Files: src/qt/res/icons/about.png
-       src/qt/res/icons/bitcoin.*
-       share/pixmaps/bitcoin*
-       src/qt/res/src/bitcoin.svg
+       src/qt/res/icons/reptiloidscoin.*
+       share/pixmaps/reptiloidscoin*
+       src/qt/res/src/reptiloidscoin.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
-Comment: Site: https://bitcointalk.org/?topic=1756.0
+Comment: Site: https://reptiloidscointalk.org/?topic=1756.0
 
 Files: src/qt/res/icons/proxy.png
        src/qt/res/src/proxy.svg

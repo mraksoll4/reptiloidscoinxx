@@ -1,47 +1,47 @@
 # It is not recommended to modify this file in-place, because it will
 # be overwritten during package upgrades. If you want to add further
 # options or overwrite existing ones then use
-# $ systemctl edit bitcoind.service
+# $ systemctl edit reptiloidscoind.service
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/bitcoin/bitcoin.conf, except for those explicitly specified as arguments
+# /etc/reptiloidscoin/reptiloidscoin.conf, except for those explicitly specified as arguments
 # in ExecStart=
 
 [Unit]
-Description=Bitcoin daemon
+Description=ReptiloidsCoin daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/bitcoind -daemon \
-                            -pid=/run/bitcoind/bitcoind.pid \
-                            -conf=/etc/bitcoin/bitcoin.conf \
-                            -datadir=/var/lib/bitcoind
+ExecStart=/usr/bin/reptiloidscoind -daemon \
+                            -pid=/run/reptiloidscoind/reptiloidscoind.pid \
+                            -conf=/etc/reptiloidscoin/reptiloidscoin.conf \
+                            -datadir=/var/lib/reptiloidscoind
 
 # Process management
 ####################
 
 Type=forking
-PIDFile=/run/bitcoind/bitcoind.pid
+PIDFile=/run/reptiloidscoind/reptiloidscoind.pid
 Restart=on-failure
 
 # Directory creation and permissions
 ####################################
 
-# Run as bitcoin:bitcoin
-User=bitcoin
-Group=bitcoin
+# Run as reptiloidscoin:reptiloidscoin
+User=reptiloidscoin
+Group=reptiloidscoin
 
-# /run/bitcoind
-RuntimeDirectory=bitcoind
+# /run/reptiloidscoind
+RuntimeDirectory=reptiloidscoind
 RuntimeDirectoryMode=0710
 
-# /etc/bitcoin
-ConfigurationDirectory=bitcoin
+# /etc/reptiloidscoin
+ConfigurationDirectory=reptiloidscoin
 ConfigurationDirectoryMode=0710
 
-# /var/lib/bitcoind
-StateDirectory=bitcoind
+# /var/lib/reptiloidscoind
+StateDirectory=reptiloidscoind
 StateDirectoryMode=0710
 
 # Hardening measures

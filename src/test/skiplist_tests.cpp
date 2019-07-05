@@ -1,10 +1,10 @@
-// Copyright (c) 2014-2018 The Bitcoin Core developers
+// Copyright (c) 2014-2018 The ReptiloidsCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <chain.h>
 #include <util/system.h>
-#include <test/test_bitcoin.h>
+#include <test/test_reptiloidscoin.h>
 
 #include <vector>
 
