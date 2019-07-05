@@ -352,7 +352,7 @@
 #define PACKAGE_TARNAME "reptiloidscoin"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://reptiloidscoincore.org/"
+#define PACKAGE_URL "https://bitcoincore.org/"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "0.17.99"
