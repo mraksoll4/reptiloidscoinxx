@@ -27,6 +27,7 @@
 #include <validationinterface.h>
 #include <versionbitsinfo.h>
 #include <warnings.h>
+#include <hashdb.h>
 
 #include <memory>
 #include <stdint.h>
@@ -403,7 +404,7 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
             if (!DecodeHexBlk(block, dataval.get_str()))
                 throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Block decode failed");
 
-            uint256 hash = block.GetHash();
+            uint256 hash = phashdb->GetHash();
             const CBlockIndex* pindex = LookupBlockIndex(hash);
             if (pindex) {
                 if (pindex->IsValid(BLOCK_VALID_SCRIPTS))
@@ -690,7 +691,7 @@ public:
 
 protected:
     void BlockChecked(const CBlock& block, const CValidationState& stateIn) override {
-        if (block.GetHash() != hash)
+        if (phashdb->GetHash() != hash)
             return;
         found = true;
         state = stateIn;
@@ -727,7 +728,7 @@ static UniValue submitblock(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Block does not start with a coinbase");
     }
 
-    uint256 hash = block.GetHash();
+    uint256 hash = phashdb->GetHash();
     {
         LOCK(cs_main);
         const CBlockIndex* pindex = LookupBlockIndex(hash);
@@ -750,7 +751,7 @@ static UniValue submitblock(const JSONRPCRequest& request)
     }
 
     bool new_block;
-    submitblock_StateCatcher sc(block.GetHash());
+    submitblock_StateCatcher sc(phashdb->GetHash());
     RegisterValidationInterface(&sc);
     bool accepted = ProcessNewBlock(Params(), blockptr, /* fForceProcessing */ true, /* fNewBlock */ &new_block);
     UnregisterValidationInterface(&sc);

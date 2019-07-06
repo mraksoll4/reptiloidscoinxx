@@ -143,6 +143,7 @@ REPTILOIDSCOIN_CORE_H = \
   key_io.h \
   keystore.h \
   dbwrapper.h \
+  hashdb.h \
   limitedmap.h \
   logging.h \
   memusage.h \
@@ -256,6 +257,7 @@ libreptiloidscoin_server_a_SOURCES = \
   interfaces/node.cpp \
   init.cpp \
   dbwrapper.cpp \
+  hashdb.cpp \
   merkleblock.cpp \
   miner.cpp \
   net.cpp \
@@ -351,8 +353,19 @@ crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/sha512.cpp \
   crypto/sha512.h \
   crypto/siphash.cpp \
-  crypto/siphash.h
+  crypto/siphash.h \
+  crypto/yespower/yespower.c
 
+noinst_HEADERS = \
+  crypto/yespower/yespower.h \
+  crypto/yespower/sha256.h \
+  crypto/yespower/sha256.c \
+  crypto/yespower/sysendian.h \
+  crypto/yespower/insecure_memzero.h \
+  crypto/yespower/yespower-platform.c \
+  crypto/yespower/yespower-opt.c \
+  crypto/yespower/yespower-ref.c
+  
 if USE_ASM
 crypto_libreptiloidscoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
 endif

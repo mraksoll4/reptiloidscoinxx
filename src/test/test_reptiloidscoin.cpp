@@ -20,6 +20,7 @@
 #include <streams.h>
 #include <ui_interface.h>
 #include <validation.h>
+#include <hashdb.h>
 
 const std::function<std::string(const char*)> G_TRANSLATION_FUN = nullptr;
 
@@ -147,7 +148,7 @@ TestChain100Setup::CreateAndProcessBlock(const std::vector<CMutableTransaction>&
         IncrementExtraNonce(&block, chainActive.Tip(), extraNonce);
     }
 
-    while (!CheckProofOfWork(block.GetHash(), block.nBits, chainparams.GetConsensus())) ++block.nNonce;
+    while (!CheckProofOfWork(phashdb->GetHash(), block.nBits, chainparams.GetConsensus())) ++block.nNonce;
 
     std::shared_ptr<const CBlock> shared_pblock = std::make_shared<const CBlock>(block);
     ProcessNewBlock(chainparams, shared_pblock, true, nullptr);

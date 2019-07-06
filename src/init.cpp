@@ -17,6 +17,7 @@
 #include <checkpoints.h>
 #include <compat/sanity.h>
 #include <consensus/validation.h>
+#include <hashdb.h>
 #include <fs.h>
 #include <httpserver.h>
 #include <httprpc.h>
@@ -275,6 +276,7 @@ void Shutdown(InitInterfaces& interfaces)
         pcoinscatcher.reset();
         pcoinsdbview.reset();
         pblocktree.reset();
+		phashdb.reset();
     }
     for (const auto& client : interfaces.chain_clients) {
         client->stop();
@@ -1481,7 +1483,10 @@ bool AppInitMain(InitInterfaces& interfaces)
                 // fails if it's still open from the previous loop. Close it first:
                 pblocktree.reset();
                 pblocktree.reset(new CBlockTreeDB(nBlockTreeDBCache, false, fReset));
-
+                // TODO: add cache size option for CHashDB
+                phashdb.reset();
+                phashdb.reset(new CHashDB(nBlockTreeDBCache, false, fReset));
+				
                 if (fReset) {
                     pblocktree->WriteReindexing(true);
                     //If we're reindexing in prune mode, wipe away unusable block files and all undo data files
