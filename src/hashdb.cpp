@@ -1,6 +1,6 @@
-#include "hashdb.h"
+#include <hashdb.h>
 
-CHashDB *phashdb = nullptr;
+std::unique_ptr<CHashDB> phashdb;
 
 CHashDB::CHashDB(size_t nCacheSize, bool fMemory, bool fWipe) : CDBWrapper(GetDataDir() / "hashes", nCacheSize, fMemory, fWipe) {
 }
