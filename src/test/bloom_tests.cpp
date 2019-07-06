@@ -16,6 +16,7 @@
 #include <util/system.h>
 #include <util/strencodings.h>
 #include <test/test_reptiloidscoin.h>
+#include <hashdb.h>
 
 #include <vector>
 

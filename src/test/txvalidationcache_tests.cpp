@@ -16,6 +16,7 @@
 #include <core_io.h>
 #include <keystore.h>
 #include <policy/policy.h>
+#include <hashdb.h>
 
 #include <boost/test/unit_test.hpp>
 

@@ -7,6 +7,7 @@
 #include <chainparams.h>
 #include <pow.h>
 #include <random.h>
+#include <hashdb.h>
 
 #include <test/test_reptiloidscoin.h>
 

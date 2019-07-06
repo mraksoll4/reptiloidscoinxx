@@ -5,6 +5,7 @@
 #include <merkleblock.h>
 #include <uint256.h>
 #include <test/test_reptiloidscoin.h>
+#include <hashdb.h>
 
 #include <boost/test/unit_test.hpp>
 

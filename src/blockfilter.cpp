@@ -8,6 +8,7 @@
 #include <primitives/transaction.h>
 #include <script/script.h>
 #include <streams.h>
+#include <hashdb.h>
 
 /// SerType used to serialize parameters in GCS filter encoding.
 static constexpr int GCS_SER_TYPE = SER_NETWORK;
