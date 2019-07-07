@@ -360,7 +360,8 @@ crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/yespower/sha256.c \
   crypto/yespower/sysendian.h \
   crypto/yespower/insecure_memzero.h \
-  crypto/yespower/yespower-opt.c
+  crypto/yespower/yespower-opt.c \
+  crypto/yespower/yespower-platform.c
   
 if USE_ASM
 crypto_libreptiloidscoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
