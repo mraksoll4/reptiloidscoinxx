@@ -333,7 +333,7 @@ libreptiloidscoin_wallet_tool_a_SOURCES = \
 
 # crypto primitives library
 crypto_libreptiloidscoin_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libreptiloidscoin_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fomit-frame-pointer
+crypto_libreptiloidscoin_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
@@ -353,18 +353,7 @@ crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/sha512.cpp \
   crypto/sha512.h \
   crypto/siphash.cpp \
-  crypto/siphash.h \
-  crypto/yespower/yespower.c
-
-noinst_HEADERS = \
-  crypto/yespower/yespower.h \
-  crypto/yespower/sha256.h \
-  crypto/yespower/sha256.c \
-  crypto/yespower/sysendian.h \
-  crypto/yespower/insecure_memzero.h \
-  crypto/yespower/yespower-platform.c \
-  crypto/yespower/yespower-opt.c \
-  crypto/yespower/yespower-ref.c
+  crypto/siphash.h
   
 if USE_ASM
 crypto_libreptiloidscoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
@@ -389,8 +378,8 @@ crypto_libreptiloidscoin_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
 crypto_libreptiloidscoin_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
 
 # consensus: shared between all executables that validate any consensus rules.
-libreptiloidscoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
-libreptiloidscoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libreptiloidscoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) -fPIC
+libreptiloidscoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC
 libreptiloidscoin_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
@@ -399,6 +388,15 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
+  crypto/yespower/yespower.c \
+  crypto/yespower/yespower.h \
+  crypto/yespower/sha256.h \
+  crypto/yespower/sha256.c \
+  crypto/yespower/sysendian.h \
+  crypto/yespower/insecure_memzero.h \
+  crypto/yespower/yespower-platform.c \
+  crypto/yespower/yespower-opt.c \
+  crypto/yespower/yespower-ref.c
   hash.cpp \
   hash.h \
   prevector.h \
