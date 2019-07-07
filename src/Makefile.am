@@ -354,12 +354,12 @@ crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/sha512.h \
   crypto/siphash.cpp \
   crypto/siphash.h \
-  crypto/yespower/yespower.h \
-  crypto/yespower/yespower.c \
-  crypto/yespower/sha256.h \
   crypto/yespower/sha256.c \
+  crypto/yespower/sha256.h \
   crypto/yespower/sysendian.h \
-  crypto/yespower/yespower-opt.c \
+  crypto/yespower/yespower.c \
+  crypto/yespower/yespower-opt.c  \
+  crypto/yespower/yespower.h
   
 if USE_ASM
 crypto_libreptiloidscoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
