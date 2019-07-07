@@ -388,7 +388,7 @@ crypto_libreptiloidscoin_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
 crypto_libreptiloidscoin_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
 
 # consensus: shared between all executables that validate any consensus rules.
-libreptiloidscoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
+libreptiloidscoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) $(LEVELDB_CPPFLAGS)
 libreptiloidscoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_consensus_a_SOURCES = \
   amount.h \
