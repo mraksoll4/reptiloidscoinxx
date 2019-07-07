@@ -9,10 +9,22 @@
 #include <tinyformat.h>
 #include <util/strencodings.h>
 #include <crypto/common.h>
+#include <hashdb.h>
+
+extern "C" void yespower_hash(const void *input, void *output);
 
 uint256 CBlockHeader::GetHash() const
 {
-    return SerializeHashYespower(*this);
+    uint256 hash;
+    if (phashdb) {
+        if(!phashdb->Read(*this, hash)) {
+            yespower_hash(BEGIN(nVersion), &hash);
+            phashdb->Write(*this, hash);
+        }
+    } else {
+        yespower_hash(BEGIN(nVersion), &hash);
+    }
+    return hash;
 }
 
 std::string CBlock::ToString() const
