@@ -65,6 +65,7 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
   $(LIBREPTILOIDSCOIN_CRYPTO) \
+  $(LIBREPTILOIDSCOIN_CRYPTO_ALTHASH) \
   $(LIBREPTILOIDSCOIN_UTIL) \
   $(LIBREPTILOIDSCOIN_COMMON) \
   $(LIBREPTILOIDSCOIN_CONSENSUS) \
@@ -325,6 +326,20 @@ libreptiloidscoin_wallet_a_SOURCES = \
   wallet/coinselection.cpp \
   $(REPTILOIDSCOIN_CORE_H)
 
+# yespower 1.0
+crypto_libreptiloidscoin_crypto_althash_a_CFLAGS = $(AM_CFLAGS)
+crypto_libreptiloidscoin_crypto_althash_a_CFLAGS += -fPIC -O2 -fomit-frame-pointer
+crypto_libreptiloidscoin_crypto_althash_a_SOURCES = \
+  crypto/yespower/yespower.h \
+  crypto/yespower/yespower.c \
+  crypto/yespower/sha256.h \
+  crypto/yespower/sha256.c \
+  crypto/yespower/insecure_memzero.h \
+  crypto/yespower/sysendian.h \
+  crypto/yespower/yespower-platform_c.h \
+  crypto/yespower/yespower-opt.c
+
+
 libreptiloidscoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
 libreptiloidscoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_wallet_tool_a_SOURCES = \
@@ -388,13 +403,6 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
-  crypto/yespower/yespower.c \
-  crypto/yespower/yespower.h \
-  crypto/yespower/sha256.h \
-  crypto/yespower/sha256.c \
-  crypto/yespower/insecure_memzero.h \
-  crypto/yespower/sysendian.h \
-  crypto/yespower/yespower-opt.c \
   hash.cpp \
   hash.h \
   prevector.h \
