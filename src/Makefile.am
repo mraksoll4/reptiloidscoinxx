@@ -392,11 +392,9 @@ libreptiloidscoin_consensus_a_SOURCES = \
   crypto/yespower/yespower.h \
   crypto/yespower/sha256.h \
   crypto/yespower/sha256.c \
-  crypto/yespower/sysendian.h \
   crypto/yespower/insecure_memzero.h \
-  crypto/yespower/yespower-platform.c \
+  crypto/yespower/sysendian.h \
   crypto/yespower/yespower-opt.c \
-  crypto/yespower/yespower-ref.c \
   hash.cpp \
   hash.h \
   prevector.h \
