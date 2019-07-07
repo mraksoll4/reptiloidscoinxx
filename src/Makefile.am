@@ -129,6 +129,7 @@ REPTILOIDSCOIN_CORE_H = \
   core_memusage.h \
   cuckoocache.h \
   fs.h \
+  hashdb.h \
   httprpc.h \
   httpserver.h \
   index/base.h \
@@ -400,7 +401,6 @@ libreptiloidscoin_consensus_a_SOURCES = \
   dbwrapper.h \
   dbwrapper.cpp \
   hashdb.cpp \
-  hashdb.h \
   hash.cpp \
   hash.h \
   prevector.h \
