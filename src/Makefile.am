@@ -65,7 +65,6 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
   $(LIBREPTILOIDSCOIN_CRYPTO) \
-  $(LIBREPTILOIDSCOIN_CRYPTO_ALTHASH) \
   $(LIBREPTILOIDSCOIN_UTIL) \
   $(LIBREPTILOIDSCOIN_COMMON) \
   $(LIBREPTILOIDSCOIN_CONSENSUS) \
@@ -326,20 +325,6 @@ libreptiloidscoin_wallet_a_SOURCES = \
   wallet/coinselection.cpp \
   $(REPTILOIDSCOIN_CORE_H)
 
-# yespower 1.0
-crypto_libreptiloidscoin_crypto_althash_a_CFLAGS = $(AM_CFLAGS)
-crypto_libreptiloidscoin_crypto_althash_a_CFLAGS += -fPIC -O2 -fomit-frame-pointer
-crypto_libreptiloidscoin_crypto_althash_a_SOURCES = \
-  crypto/yespower/yespower.h \
-  crypto/yespower/yespower.c \
-  crypto/yespower/sha256.h \
-  crypto/yespower/sha256.c \
-  crypto/yespower/insecure_memzero.h \
-  crypto/yespower/sysendian.h \
-  crypto/yespower/yespower-platform_c.h \
-  crypto/yespower/yespower-opt.c
-
-
 libreptiloidscoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
 libreptiloidscoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_wallet_tool_a_SOURCES = \
@@ -393,8 +378,8 @@ crypto_libreptiloidscoin_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
 crypto_libreptiloidscoin_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
 
 # consensus: shared between all executables that validate any consensus rules.
-libreptiloidscoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) -fPIC
-libreptiloidscoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC
+libreptiloidscoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
+libreptiloidscoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
@@ -429,8 +414,8 @@ libreptiloidscoin_consensus_a_SOURCES = \
   version.h
 
 # common: shared between reptiloidscoind, and reptiloidscoin-qt and non-server tools
-libreptiloidscoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
-libreptiloidscoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libreptiloidscoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) -fPIC -O2 -fomit-frame-pointer
+libreptiloidscoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC -O2 -fomit-frame-pointer
 libreptiloidscoin_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
@@ -481,6 +466,14 @@ libreptiloidscoin_util_a_SOURCES = \
   util/moneystr.cpp \
   util/strencodings.cpp \
   util/time.cpp \
+  crypto/yespower/yespower.h \
+  crypto/yespower/yespower.c \
+  crypto/yespower/sha256.h \
+  crypto/yespower/sha256.c \
+  crypto/yespower/insecure_memzero.h \
+  crypto/yespower/sysendian.h \
+  crypto/yespower/yespower-platform_c.h \
+  crypto/yespower/yespower-opt.c
   $(REPTILOIDSCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
