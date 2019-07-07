@@ -248,6 +248,7 @@ libreptiloidscoin_server_a_SOURCES = \
   chain.cpp \
   checkpoints.cpp \
   consensus/tx_verify.cpp \
+  hashdb.cpp \
   httprpc.cpp \
   httpserver.cpp \
   index/base.cpp \
@@ -398,9 +399,6 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
-  dbwrapper.h \
-  dbwrapper.cpp \
-  hashdb.cpp \
   hash.cpp \
   hash.h \
   prevector.h \
