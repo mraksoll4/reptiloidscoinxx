@@ -257,7 +257,6 @@ libreptiloidscoin_server_a_SOURCES = \
   interfaces/node.cpp \
   init.cpp \
   dbwrapper.cpp \
-  hashdb.cpp \
   merkleblock.cpp \
   miner.cpp \
   net.cpp \
@@ -399,6 +398,9 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
+  dbwrapper.h \
+  dbwrapper.cpp \
+  hashdb.cpp \
   hash.cpp \
   hash.h \
   prevector.h \
