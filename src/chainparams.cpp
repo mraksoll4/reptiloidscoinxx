@@ -64,12 +64,12 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 210000;
-        consensus.BIP16Exception = uint256S("0x00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25");
+        consensus.BIP16Exception = uint256S("0x0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77");
         consensus.BIP34Height = 227931;
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.BIP65Height = 388381; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.BIP66Height = 363725; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
-        consensus.powLimit = uint256S("0x3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("000fffff00000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -110,9 +110,9 @@ public:
         m_assumed_blockchain_size = 0;
         m_assumed_chain_state_size = 0;
 
-        genesis = CreateGenesisBlock(1562449287, 719, 0x1e3fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1562469209, 2859098, 0x1f0fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77"));
         assert(genesis.hashMerkleRoot == uint256S("0xd3da95f57eeb1f54c37f2f3b7eafcadd3a7dd44fad1ad71e136ae7c537017050"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
@@ -138,7 +138,7 @@ public:
 
         checkpointData = {
             {
-                { 0, uint256S("0x00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25")},
+                { 0, uint256S("0x0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77")},
             }
         };
 
@@ -162,12 +162,12 @@ public:
     CTestNetParams() {
         strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 210000;
-        consensus.BIP16Exception = uint256S("0x00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25");
+        consensus.BIP16Exception = uint256S("0x0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77");
         consensus.BIP34Height = 21111;
         consensus.BIP34Hash = uint256S("0x0000000023b3a96d3484e5abb3755c413e7d41500f8e2a5c3f0dd01299cd8ef8");
         consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 330776; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
-        consensus.powLimit = uint256S("0x3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("000fffff00000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -203,9 +203,9 @@ public:
         m_assumed_blockchain_size = 0;
         m_assumed_chain_state_size = 0;
 
-        genesis = CreateGenesisBlock(1562449287, 719, 0x1e3fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1562469209, 2859098, 0x1f0fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77"));
         assert(genesis.hashMerkleRoot == uint256S("0xd3da95f57eeb1f54c37f2f3b7eafcadd3a7dd44fad1ad71e136ae7c537017050"));
 
         vFixedSeeds.clear();
@@ -231,7 +231,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25")},
+                {0, uint256S("0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77")},
             }
         };
 
@@ -260,7 +260,7 @@ public:
         consensus.BIP34Hash = uint256();
         consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in functional tests)
         consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in functional tests)
-        consensus.powLimit = uint256S("0x3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("000fffff00000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -294,9 +294,9 @@ public:
 
         UpdateVersionBitsParametersFromArgs(args);
 
-        genesis = CreateGenesisBlock(1562449287, 719, 0x1e3fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1562469209, 2859098, 0x1f0fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77"));
         assert(genesis.hashMerkleRoot == uint256S("0xd3da95f57eeb1f54c37f2f3b7eafcadd3a7dd44fad1ad71e136ae7c537017050"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
@@ -308,7 +308,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("00000421b6be018736d9eda605abbfb06ebe8aa89c57bea3373846b8ca094c25")},
+                {0, uint256S("0000092ca691089f82762eed9f3febc469a8b64f415382d81d8563ef98447c77")},
             }
         };
 
