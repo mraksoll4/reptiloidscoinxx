@@ -466,14 +466,14 @@ libreptiloidscoin_util_a_SOURCES = \
   util/moneystr.cpp \
   util/strencodings.cpp \
   util/time.cpp \
-  crypto/yespower/yespower.h \
   crypto/yespower/yespower.c \
+  crypto/yespower/yespower.h \
   crypto/yespower/sha256.h \
   crypto/yespower/sha256.c \
   crypto/yespower/insecure_memzero.h \
   crypto/yespower/sysendian.h \
   crypto/yespower/yespower-platform_c.h \
-  crypto/yespower/yespower-opt.c
+  crypto/yespower/yespower-opt.c \
   $(REPTILOIDSCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
