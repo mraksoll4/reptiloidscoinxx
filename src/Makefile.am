@@ -472,7 +472,7 @@ libreptiloidscoin_util_a_SOURCES = \
   crypto/yespower/sha256.c \
   crypto/yespower/insecure_memzero.h \
   crypto/yespower/sysendian.h \
-  crypto/yespower/yespower-platform_c.h \
+  crypto/yespower/yespower-platform.c \
   crypto/yespower/yespower-opt.c \
   $(REPTILOIDSCOIN_CORE_H)
 
