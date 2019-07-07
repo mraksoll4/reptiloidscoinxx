@@ -236,7 +236,7 @@ obj/build.h: FORCE
 libreptiloidscoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between reptiloidscoind and reptiloidscoin-qt
-libreptiloidscoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libreptiloidscoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS) $(LEVELDB_CPPFLAGS)
 libreptiloidscoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_server_a_SOURCES = \
   addrdb.cpp \
