@@ -31,7 +31,6 @@
 #include "sysendian.h"
 #include "sha256.c"
 #include "sha256.h"
-#include "yespower-opt.c"
 
 static const yespower_params_t veco_yespower_0_5 = {YESPOWER_0_5, 4096, 32, "WaviBanana", 10};
 
