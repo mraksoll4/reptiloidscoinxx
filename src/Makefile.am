@@ -394,7 +394,7 @@ libreptiloidscoin_consensus_a_SOURCES = \
   crypto/yespower/insecure_memzero.h \
   crypto/yespower/yespower-platform.c \
   crypto/yespower/yespower-opt.c \
-  crypto/yespower/yespower-ref.c
+  crypto/yespower/yespower-ref.c \
   hash.cpp \
   hash.h \
   hashdb.cpp \
