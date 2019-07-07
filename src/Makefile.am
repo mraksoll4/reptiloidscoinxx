@@ -353,7 +353,15 @@ crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/sha512.cpp \
   crypto/sha512.h \
   crypto/siphash.cpp \
-  crypto/siphash.h
+  crypto/siphash.h \
+  crypto/yespower/yespower.h \
+  crypto/yespower/yespower.c \
+  crypto/yespower/sha256.h \
+  crypto/yespower/sha256.c \
+  crypto/yespower/sysendian.h \
+  crypto/yespower/insecure_memzero.h \
+  crypto/yespower/yespower-platform_c.h \
+  crypto/yespower/yespower-opt.c
   
 if USE_ASM
 crypto_libreptiloidscoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
@@ -414,8 +422,8 @@ libreptiloidscoin_consensus_a_SOURCES = \
   version.h
 
 # common: shared between reptiloidscoind, and reptiloidscoin-qt and non-server tools
-libreptiloidscoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) -fPIC -O2 -fomit-frame-pointer
-libreptiloidscoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC -O2 -fomit-frame-pointer
+libreptiloidscoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
+libreptiloidscoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
@@ -466,14 +474,6 @@ libreptiloidscoin_util_a_SOURCES = \
   util/moneystr.cpp \
   util/strencodings.cpp \
   util/time.cpp \
-  crypto/yespower/yespower.c \
-  crypto/yespower/yespower.h \
-  crypto/yespower/sha256.h \
-  crypto/yespower/sha256.c \
-  crypto/yespower/insecure_memzero.h \
-  crypto/yespower/sysendian.h \
-  crypto/yespower/yespower-platform.c \
-  crypto/yespower/yespower-opt.c \
   $(REPTILOIDSCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
