@@ -216,7 +216,7 @@ public:
     template<typename T>
     CHashWriterYespower& operator<<(const T& obj) {
         // Serialize to this stream
-        ::Serialize(*this, obj, nType, nVersion);//yespower
+        ::Serialize(*this, obj); //yespower
         return (*this);
     }
 };
