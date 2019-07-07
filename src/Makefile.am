@@ -332,8 +332,8 @@ libreptiloidscoin_wallet_tool_a_SOURCES = \
   $(REPTILOIDSCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libreptiloidscoin_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libreptiloidscoin_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fomit-frame-pointer
+crypto_libreptiloidscoin_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS) -fPIC -O2 -fomit-frame-pointer
+crypto_libreptiloidscoin_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC -O2 -fomit-frame-pointer
 crypto_libreptiloidscoin_crypto_base_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
