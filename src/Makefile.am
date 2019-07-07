@@ -143,7 +143,6 @@ REPTILOIDSCOIN_CORE_H = \
   key_io.h \
   keystore.h \
   dbwrapper.h \
-  hashdb.h \
   limitedmap.h \
   logging.h \
   memusage.h \
@@ -257,7 +256,6 @@ libreptiloidscoin_server_a_SOURCES = \
   interfaces/node.cpp \
   init.cpp \
   dbwrapper.cpp \
-  hashdb.cpp \
   merkleblock.cpp \
   miner.cpp \
   net.cpp \
@@ -399,6 +397,10 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
+  dbwrapper.h \
+  dbwrapper.cpp \
+  hashdb.cpp \
+  hashdb.h \
   hash.cpp \
   hash.h \
   prevector.h \
