@@ -398,8 +398,6 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
-  dbwrapper.h \
-  dbwrapper.cpp \
   hashdb.cpp \
   hash.cpp \
   hash.h \
