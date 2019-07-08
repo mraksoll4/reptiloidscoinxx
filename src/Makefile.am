@@ -398,9 +398,6 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/merkle.h \
   consensus/params.h \
   consensus/validation.h \
-  hashdb.cpp \
-  dbwrapper.h \
-  dbwrapper.cpp \
   hash.cpp \
   hash.h \
   prevector.h \
@@ -427,11 +424,14 @@ libreptiloidscoin_consensus_a_SOURCES = \
   version.h
 
 # common: shared between reptiloidscoind, and reptiloidscoin-qt and non-server tools
-libreptiloidscoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES)
+libreptiloidscoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(REPTILOIDSCOIN_INCLUDES) $(LEVELDB_CPPFLAGS)
 libreptiloidscoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libreptiloidscoin_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
+  hashdb.cpp \
+  dbwrapper.h \
+  dbwrapper.cpp \
   chainparams.cpp \
   coins.cpp \
   compressor.cpp \
