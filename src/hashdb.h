@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_HASHDB_H
-#define BITCOIN_HASHDB_H
+#ifndef REPTILOIDSCOIN_HASHDB_H
+#define REPTILOIDSCOIN_HASHDB_H
 
 #include <dbwrapper.h>
 #include <primitives/block.h>
@@ -20,4 +20,4 @@ class CHashDB : public CDBWrapper
 
 extern std::unique_ptr<CHashDB> phashdb;
 
-#endif //BITCOIN_HASHDB_H
+#endif //REPTILOIDSCOIN_HASHDB_H

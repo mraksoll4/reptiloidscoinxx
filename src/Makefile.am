@@ -399,6 +399,8 @@ libreptiloidscoin_consensus_a_SOURCES = \
   consensus/params.h \
   consensus/validation.h \
   hashdb.cpp \
+  dbwrapper.h \
+  dbwrapper.cpp \
   hash.cpp \
   hash.h \
   prevector.h \
